@@ -7,7 +7,7 @@ CREATE TABLE users
 CREATE TABLE todo_items
 (
     id bigint AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    todo varchar(100),
+    title varchar(100),
     description text,
     completed bool default 0,
     user_id bigint,
