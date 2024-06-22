@@ -1,8 +1,14 @@
 package com.lifung.todolistservice.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lifung.todolistservice.dto.TodoItemDto;
@@ -22,5 +28,12 @@ public class TodoController {
   @PostMapping
   public TodoItemDto createTodo(@RequestBody TodoItemDto todoDto) {
     return todoItemMapper.toTodoItemDto(todoItemService.createTodoItem(todoDto));
+  }
+
+  @GetMapping("/owner/{username}")
+  public List<TodoItemDto> getToDosByOwner(@PathVariable String username) {
+    return todoItemService.getTodoListByOwner(username).stream()
+        .map(todoItemMapper::toTodoItemDto)
+        .collect(Collectors.toList());
   }
 }
