@@ -1,5 +1,8 @@
 package com.lifung.todolistservice.service.impl;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 import org.apache.commons.lang3.StringUtils;
@@ -43,6 +46,12 @@ public class TodoItemServiceImpl implements TodoItemService {
     } else {
       throw new BaseException("Username is required", ErrorCode.USERNAME_IS_BLANK);
     }
+  }
 
+  @Override
+  public List<TodoItem> getTodoListByOwner(String username) {
+    Optional<User> userOpt = userService.findByUsername(username);
+    return userOpt.isPresent() ?
+        userOpt.get().getTodoItems() : Collections.emptyList();
   }
 }
