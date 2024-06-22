@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.4.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: lifung
+      MYSQL_DATABASE: todolistdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
