@@ -27,13 +27,12 @@ public class TodoItemServiceImpl implements TodoItemService {
 
   private final TodoItemRepository todoItemRepository;
   private final UserService userService;
-  private final TodoItemMapper todoItemMapper;
   private final TodoItemESService todoItemESService;
 
   @Override
   public TodoItem createTodoItem(TodoItemDto todoDto) {
     if (StringUtils.isNotBlank(todoDto.getOwnerName())) {
-      TodoItem todoItem = todoItemMapper.toTodoItem(todoDto);
+      TodoItem todoItem = TodoItemMapper.toTodoItem(todoDto);
 
       Optional<User> userOpt = userService.findByUsername(todoDto.getOwnerName());
       if (userOpt.isPresent()) {

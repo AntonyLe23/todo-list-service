@@ -24,24 +24,23 @@ import lombok.AllArgsConstructor;
 public class TodoController {
 
   private final TodoItemService todoItemService;
-  private final TodoItemMapper todoItemMapper;
 
   @PostMapping
   public TodoItemDto createTodo(@RequestBody TodoItemDto todoDto) {
-    return todoItemMapper.toTodoItemDto(todoItemService.createTodoItem(todoDto));
+    return TodoItemMapper.toTodoItemDto(todoItemService.createTodoItem(todoDto));
   }
 
   @GetMapping("/owner/{username}")
   public List<TodoItemDto> getToDosByOwner(@PathVariable String username) {
     return todoItemService.getTodoListByOwner(username).stream()
-        .map(todoItemMapper::toTodoItemDto)
+        .map(TodoItemMapper::toTodoItemDto)
         .collect(Collectors.toList());
   }
 
   @GetMapping("/search")
   public Map<String, List<TodoItemDto>> searchToDosByOwner(@RequestParam(name = "owner") String username) {
     return todoItemService.searchTodoItemByOwner(username).stream()
-        .map(todoItemMapper::toTodoItemDto)
+        .map(TodoItemMapper::toTodoItemDto)
         .collect(Collectors.groupingBy(TodoItemDto::getOwnerName));
   }
 }

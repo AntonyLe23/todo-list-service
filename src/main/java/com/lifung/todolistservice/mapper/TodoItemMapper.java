@@ -1,14 +1,11 @@
 package com.lifung.todolistservice.mapper;
 
-import org.springframework.stereotype.Component;
-
-import com.lifung.todolistservice.model.TodoItem;
 import com.lifung.todolistservice.dto.TodoItemDto;
+import com.lifung.todolistservice.model.TodoItem;
 
-@Component
 public class TodoItemMapper {
 
-  public TodoItem toTodoItem(TodoItemDto todoDto) {
+  public static TodoItem toTodoItem(TodoItemDto todoDto) {
     TodoItem todoItem = new TodoItem();
     todoItem.setCompleted(todoDto.isCompleted());
     todoItem.setDescription(todoDto.getDescription());
@@ -16,7 +13,7 @@ public class TodoItemMapper {
     return todoItem;
   }
 
-  public TodoItemDto toTodoItemDto(TodoItem todoItem) {
+  public static TodoItemDto toTodoItemDto(TodoItem todoItem) {
     return TodoItemDto.builder()
         .title(todoItem.getTitle())
         .description(todoItem.getDescription())
