@@ -11,5 +11,18 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - cluster.name=todo-list-service
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+
 volumes:
   mysql-data:
+  es-data:

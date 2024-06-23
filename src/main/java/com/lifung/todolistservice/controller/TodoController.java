@@ -1,6 +1,7 @@
 package com.lifung.todolistservice.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,5 +36,12 @@ public class TodoController {
     return todoItemService.getTodoListByOwner(username).stream()
         .map(todoItemMapper::toTodoItemDto)
         .collect(Collectors.toList());
+  }
+
+  @GetMapping("/search")
+  public Map<String, List<TodoItemDto>> searchToDosByOwner(@RequestParam(name = "owner") String username) {
+    return todoItemService.searchTodoItemByOwner(username).stream()
+        .map(todoItemMapper::toTodoItemDto)
+        .collect(Collectors.groupingBy(TodoItemDto::getOwnerName));
   }
 }
