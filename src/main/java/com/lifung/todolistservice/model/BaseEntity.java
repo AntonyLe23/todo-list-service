@@ -13,10 +13,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @MappedSuperclass
-@AllArgsConstructor
 public abstract class BaseEntity {
 
   protected BaseEntity() {
+    // Empty
   }
 
   @Id

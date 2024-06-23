@@ -10,4 +10,6 @@ public interface TodoItemService {
   TodoItem createTodoItem(TodoItemDto todoDto);
 
   List<TodoItem> getTodoListByOwner(String username);
+
+  List<TodoItem> searchTodoItemByOwner(String username);
 }
