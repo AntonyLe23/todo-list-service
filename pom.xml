@@ -30,6 +30,7 @@
     <java.version>17</java.version>
     <jaxb-api.version>2.3.0</jaxb-api.version>
     <elasticsearch.version>8.14.1</elasticsearch.version>
+    <h2-db.version>2.2.224</h2-db.version>
   </properties>
   <dependencies>
     <dependency>
@@ -91,6 +92,14 @@
       <artifactId>elasticsearch</artifactId>
       <version>${elasticsearch.version}</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>${h2-db.version}</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
