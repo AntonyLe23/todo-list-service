@@ -1,15 +1,12 @@
 package com.lifung.todolistservice.dto;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lifung.todolistservice.model.BaseEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
